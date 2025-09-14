@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BasicAuthentication\BasicAuthentication.csproj" />
+    <ProjectReference Include="..\JwtAuthentication\JwtAuthentication.csproj" />
   </ItemGroup>
 
 </Project>

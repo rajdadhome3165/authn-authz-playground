@@ -1,0 +1,93 @@
+### JWT Authentication Demo API Testing
+### Base URL
+@baseUrl = https://localhost:7158
+
+### Health Check (Public)
+GET {{baseUrl}}/api/public/health
+
+### Public Weather Forecast (No Authentication)
+GET {{baseUrl}}/api/public/weather
+
+### User Login - Admin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### User Login - Regular User
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### User Login - Manager
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "manager",
+  "password": "manager123"
+}
+
+### Invalid Login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "invalid",
+  "password": "invalid"
+}
+
+### Protected Weather Forecast (Requires JWT)
+### Replace {token} with actual JWT from login response
+GET {{baseUrl}}/api/protected/weather
+Authorization: Bearer {token}
+
+### Get User Info (Requires JWT)
+### Replace {token} with actual JWT from login response
+GET {{baseUrl}}/api/protected/user-info
+Authorization: Bearer {token}
+
+### Get All Users (Admin Only - Requires JWT with Admin role)
+### Replace {admin_token} with JWT from admin login
+GET {{baseUrl}}/api/admin/users
+Authorization: Bearer {admin_token}
+
+### Refresh Token
+### Replace {refresh_token} with actual refresh token from login response
+POST {{baseUrl}}/api/auth/refresh
+Content-Type: application/json
+
+{
+  "refreshToken": "{refresh_token}"
+}
+
+### Logout (Requires JWT)
+### Replace {token} with actual JWT and {refresh_token} with refresh token
+POST {{baseUrl}}/api/auth/logout
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  "refreshToken": "{refresh_token}"
+}
+
+### Test with dotnet user-jwts token
+### After running: dotnet user-jwts create --name testuser --role User
+GET {{baseUrl}}/api/protected/weather
+Authorization: Bearer {dotnet_user_jwt_token}
+
+### Test admin access with dotnet user-jwts
+### After running: dotnet user-jwts create --name testadmin --role Admin --role User
+GET {{baseUrl}}/api/admin/users
+Authorization: Bearer {dotnet_admin_jwt_token}
+
+### Example of testing with expired token
+GET {{baseUrl}}/api/protected/weather
+Authorization: Bearer expired.jwt.token

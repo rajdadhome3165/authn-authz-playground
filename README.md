@@ -13,7 +13,7 @@ AuthNAuthZPlayground/
 ├── AuthNAuthZPlayground.AppHost/          # .NET Aspire orchestration
 ├── AuthNAuthZPlayground.ServiceDefaults/  # Shared service configurations
 ├── BasicAuthentication/                   # HTTP Basic Authentication implementation
-└── [Future authentication types will be added here]
+└── JwtAuthentication/                     # JWT Bearer Token Authentication implementation
 ```
 
 ## 🔐 Authentication Types
@@ -44,11 +44,52 @@ Implements HTTP Basic Authentication with in-memory user storage for demonstrati
 - `GET /api/protected/user-info` - User information (requires authentication)
 - `GET /api/admin/users` - All users list (requires Admin role)
 
+### ✅ JWT Bearer Token Authentication
+**Project:** `JwtAuthentication/`
+
+Implements modern JWT Bearer token authentication with refresh token support and multiple authentication schemes.
+
+**Features:**
+- JWT Bearer token authentication with RS256 signing
+- Refresh token mechanism for secure token renewal
+- Multiple authentication schemes (Application JWT + Development JWT)
+- Policy-based authentication scheme selection
+- Role-based authorization (Admin, User)
+- `dotnet user-jwts` integration for development testing
+- Token blacklisting for secure logout
+- Comprehensive security configuration
+- OpenAPI/Swagger integration with JWT security definitions
+
+**Test Users:**
+- `admin:admin123` (Admin, User roles)
+- `user:user123` (User role)
+- `test:test123` (User role)
+- `demo:demo123` (User role)
+
+**Authentication Endpoints:**
+- `POST /api/auth/login` - Login with username/password (returns access and refresh tokens)
+- `POST /api/auth/refresh` - Refresh access token using refresh token
+- `POST /api/auth/logout` - Logout and invalidate tokens
+
+**API Endpoints:**
+- `GET /api/public/health` - Public health check
+- `GET /api/public/weather` - Public weather forecast
+- `GET /api/protected/weather` - Protected weather forecast (requires authentication)
+- `GET /api/protected/user-info` - User information (requires authentication)
+- `GET /api/admin/users` - All users list (requires Admin role)
+- `GET /api/admin/tokens` - Active tokens management (requires Admin role)
+
+**Development Testing:**
+Use `dotnet user-jwts` to create development tokens:
+```bash
+cd JwtAuthentication
+dotnet user-jwts create --role Admin --role User --name testuser
+```
+
 ### 🔄 Planned Authentication Types
 
 The following authentication methods will be added to demonstrate various approaches:
 
-- **JWT Bearer Token Authentication** - Stateless token-based authentication
 - **Cookie Authentication** - Session-based authentication with cookies
 - **OAuth 2.0 / OpenID Connect** - Third-party authentication (Google, Microsoft, etc.)
 - **API Key Authentication** - Simple API key-based authentication
@@ -88,11 +129,20 @@ The following authentication methods will be added to demonstrate various approa
    - API: `https://localhost:7082` or `http://localhost:5082`
    - Swagger UI: Available at the root URL
 
+2. **JWT Authentication Demo:**
+   ```bash
+   cd JwtAuthentication
+   dotnet run
+   ```
+   - API: `https://localhost:7158` or `http://localhost:5182`
+   - Swagger UI: Available at the root URL
+
 ### Testing the APIs
 
 Each project includes a `.http` file with pre-configured requests for testing:
 
 - **BasicAuthentication.http** - Contains all endpoint examples with proper authentication headers
+- **JwtAuthentication.http** - Contains JWT authentication flow examples including login, token refresh, and protected endpoints
 
 Use these files with:
 - Visual Studio 2022 (built-in support)
