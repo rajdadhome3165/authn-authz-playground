@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore.Authentication;
 using BasicAuthentication.Authentication;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

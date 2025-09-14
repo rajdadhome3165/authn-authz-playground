@@ -1,6 +1,54 @@
 @BasicAuthentication_HostAddress = http://localhost:5082
 
+### Public Health Check - No Authentication Required
+GET {{BasicAuthentication_HostAddress}}/api/public/health
+Accept: application/json
+
+### Public Weather Forecast - No Authentication Required
+GET {{BasicAuthentication_HostAddress}}/api/public/weather
+Accept: application/json
+
+### Legacy Weather Forecast Endpoint (Redirects to Public)
 GET {{BasicAuthentication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### Protected Weather Forecast - Basic Authentication Required (User: admin, Password: admin123)
+GET {{BasicAuthentication_HostAddress}}/api/protected/weather
+Accept: application/json
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Protected Weather Forecast - Basic Authentication Required (User: user, Password: user123)
+GET {{BasicAuthentication_HostAddress}}/api/protected/weather
+Accept: application/json
+Authorization: Basic dXNlcjp1c2VyMTIz
+
+### Get User Information - Basic Authentication Required (User: admin)
+GET {{BasicAuthentication_HostAddress}}/api/protected/user-info
+Accept: application/json
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get User Information - Basic Authentication Required (User: test)
+GET {{BasicAuthentication_HostAddress}}/api/protected/user-info
+Accept: application/json
+Authorization: Basic dGVzdDp0ZXN0MTIz
+
+### Get All Users - Admin Role Required (User: admin)
+GET {{BasicAuthentication_HostAddress}}/api/admin/users
+Accept: application/json
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
+
+### Get All Users - Should Fail with Regular User (User: user)
+GET {{BasicAuthentication_HostAddress}}/api/admin/users
+Accept: application/json
+Authorization: Basic dXNlcjp1c2VyMTIz
+
+### Test Invalid Credentials - Should Return 401
+GET {{BasicAuthentication_HostAddress}}/api/protected/weather
+Accept: application/json
+Authorization: Basic aW52YWxpZDppbnZhbGlk
+
+### Test Missing Authorization - Should Return 401
+GET {{BasicAuthentication_HostAddress}}/api/protected/weather
 Accept: application/json
 
 ###

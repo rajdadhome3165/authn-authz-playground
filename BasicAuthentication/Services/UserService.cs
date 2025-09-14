@@ -1,6 +1,4 @@
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace BasicAuthentication.Services;
 
@@ -10,11 +8,11 @@ namespace BasicAuthentication.Services;
 /// </summary>
 public class UserService : IUserService
 {
-    private readonly ILogger<UserService> _logger;
+    private readonly ILogger<UserService> logger;
     
     // Demo users - in production, this would come from a database or external service
     // Passwords should be hashed in production, but kept plain for demo simplicity
-    private readonly Dictionary<string, UserData> _users = new()
+    private readonly Dictionary<string, UserData> users = new()
     {
         ["admin"] = new("admin123", ["Admin", "User"], "Administrator"),
         ["user"] = new("user123", ["User"], "Regular User"),
@@ -24,7 +22,7 @@ public class UserService : IUserService
 
     public UserService(ILogger<UserService> logger)
     {
-        _logger = logger;
+        this.logger = logger;
     }
 
     /// <inheritdoc />
@@ -39,22 +37,22 @@ public class UserService : IUserService
         // Add artificial delay to prevent timing attacks (in production, use proper password hashing)
         Task.Delay(Random.Shared.Next(50, 150), cancellationToken).Wait(cancellationToken);
 
-        _logger.LogDebug("Validating credentials for user: {Username}", username);
+        logger.LogDebug("Validating credentials for user: {Username}", username);
 
-        if (!_users.TryGetValue(username, out var userData))
+        if (!users.TryGetValue(username, out var userData))
         {
-            _logger.LogWarning("Authentication failed: User '{Username}' not found", username);
+            logger.LogWarning("Authentication failed: User '{Username}' not found", username);
             return Task.FromResult<IEnumerable<Claim>?>(null);
         }
 
         // In production, use secure password comparison (e.g., BCrypt.Verify)
         if (!SecureStringCompare(userData.Password, password))
         {
-            _logger.LogWarning("Authentication failed: Invalid password for user '{Username}'", username);
+            logger.LogWarning("Authentication failed: Invalid password for user '{Username}'", username);
             return Task.FromResult<IEnumerable<Claim>?>(null);
         }
 
-        _logger.LogInformation("User '{Username}' authenticated successfully", username);
+        logger.LogInformation("User '{Username}' authenticated successfully", username);
 
         var claims = CreateUserClaims(username, userData);
         return Task.FromResult<IEnumerable<Claim>?>(claims);

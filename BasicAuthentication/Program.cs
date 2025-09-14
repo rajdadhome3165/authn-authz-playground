@@ -1,6 +1,4 @@
-using BasicAuthentication.Authentication;
 using BasicAuthentication.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
 
