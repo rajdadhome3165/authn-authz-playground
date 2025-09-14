@@ -1,3 +1,4 @@
+using BasicAuthentication.Models;
 using BasicAuthentication.Services;
 using Microsoft.OpenApi.Models;
 using System.Security.Claims;
@@ -248,52 +249,3 @@ static IResult GetAllUsers(IUserService userService, ClaimsPrincipal user)
 
     return TypedResults.Ok(response);
 }
-
-// Response DTOs
-public record HealthResponse(
-    string Status,
-    DateTimeOffset Timestamp,
-    string Version,
-    string Environment
-);
-
-public record WeatherForecast(
-    DateOnly Date,
-    int TemperatureC,
-    string? Summary
-)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-
-public record WeatherForecastResponse(
-    WeatherForecast[] Forecasts,
-    DateTimeOffset GeneratedAt,
-    string Source
-);
-
-public record ClaimInfo(
-    string Type,
-    string Value
-);
-
-public record UserInfoResponse(
-    string Username,
-    bool IsAuthenticated,
-    string AuthenticationType,
-    string[] Roles,
-    ClaimInfo[] Claims,
-    DateTimeOffset RetrievedAt
-);
-
-public record UserSummary(
-    string Username,
-    string DisplayName,
-    string[] Roles
-);
-
-public record UsersResponse(
-    UserSummary[] Users,
-    string RequestedBy,
-    DateTimeOffset RetrievedAt
-);
